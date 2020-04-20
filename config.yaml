@@ -12,3 +12,4 @@ server:
       port: 8443
       keyStorePath: example.keystore
       keyStorePassword: example
+      validateCerts: false
