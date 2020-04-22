@@ -1,15 +1,19 @@
-#server:
-#  type: simple
-#  applicationContextPath: /
-#  #adminContextPath: /admin # If you plan to use an admin path, you'll need to also use non-root app path
-#  connector:
-#    type: http
-#    port: 8080
-
 server:
-  applicationConnectors:
-    - type: https
-      port: 8443
-      keyStorePath: example.keystore
-      keyStorePassword: example
-      validateCerts: false
+  type: simple
+  applicationContextPath: /
+  #adminContextPath: /admin # If you plan to use an admin path, you'll need to also use non-root app path
+  connector:
+    type: http
+    port: 8080
+
+#server:
+#  applicationConnectors:
+#    - type: https
+#      port: 8443
+#      keyStorePath: example.keystore
+#      keyStorePassword: example
+#      validateCerts: false
+#-Ddw:
+#  server:
+#    applicationConnectors[0]:
+#      port=$PORT:
