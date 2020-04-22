@@ -1,6 +1,6 @@
 server:
   type: simple
-  applicationContextPath: /
+#  applicationContextPath: /
   #adminContextPath: /admin # If you plan to use an admin path, you'll need to also use non-root app path
   connector:
     type: http
