@@ -12,6 +12,9 @@ import io.dropwizard.Configuration;
 import io.dropwizard.setup.Environment;
 
 
+/**
+ * The type Calendar service application.
+ */
 public class CalendarServiceApplication extends Application<Configuration> {
     @Override
     public void run(Configuration configuration, Environment environment) throws Exception {
@@ -25,6 +28,12 @@ public class CalendarServiceApplication extends Application<Configuration> {
 
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception {
         new CalendarServiceApplication().run(args);
     }

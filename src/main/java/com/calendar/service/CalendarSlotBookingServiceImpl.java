@@ -12,14 +12,22 @@ import com.calendar.models.UserSlotsMapping;
 import com.calendar.models.UserTokenInfo;
 import org.eclipse.jetty.server.Response;
 
-import java.time.LocalDate;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * The type Calendar slot booking service.
+ */
 public class CalendarSlotBookingServiceImpl implements CalendarSlotBookingService {
     private CalendarSlotBookingDataManagerImpl calendarSlotBookingDataManager;
     private AuthDataManager authDataManager;
 
+    /**
+     * Instantiates a new Calendar slot booking service.
+     *
+     * @param calendarSlotBookingDataManager the calendar slot booking data manager
+     * @param authDataManager                the auth data manager
+     */
     public CalendarSlotBookingServiceImpl(CalendarSlotBookingDataManagerImpl calendarSlotBookingDataManager,
                                           AuthDataManager authDataManager) {
         this.calendarSlotBookingDataManager = calendarSlotBookingDataManager;

@@ -2,26 +2,33 @@ package com.calendar.service;
 
 import com.calendar.customexception.CalendarSlotBookingException;
 import com.calendar.manager.AuthDataManager;
-import com.calendar.manager.CalendarSlotBookingDataManagerImpl;
 import com.calendar.models.AuthToken;
-import com.calendar.models.AvailableSlotsRequest;
-import com.calendar.models.SlotBookingRequest;
-import com.calendar.models.User;
-import com.calendar.models.UserInfo;
-import com.calendar.models.UserSlotsMapping;
-import org.eclipse.jetty.server.Response;
 
-import java.util.Map;
 import java.util.UUID;
 
+/**
+ * The type Auth service.
+ */
 public class AuthService {
     private AuthDataManager authDataManager;
 
+    /**
+     * Instantiates a new Auth service.
+     *
+     * @param authDataManager the auth data manager
+     */
     public AuthService(AuthDataManager authDataManager) {
         this.authDataManager = authDataManager;
     }
 
 
+    /**
+     * Generate auth token auth token.
+     *
+     * @param userId the user id
+     * @return the auth token
+     * @throws CalendarSlotBookingException the calendar slot booking exception
+     */
     public AuthToken generateAuthToken(UUID userId) throws CalendarSlotBookingException {
         return authDataManager.generateTokenForExistingUser(userId);
     }

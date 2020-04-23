@@ -17,6 +17,10 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * The type Calendar slot booking data manager.
+ * manages data for user info
+ */
 public class CalendarSlotBookingDataManagerImpl implements CalendarSlotBookingDataManager {
     private static CalendarSlotBookingDataManagerImpl calendarDataManager;
     // contains info about user slots
@@ -26,6 +30,11 @@ public class CalendarSlotBookingDataManagerImpl implements CalendarSlotBookingDa
         this.usersSlotsInfo = new ConcurrentHashMap<>();
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static CalendarSlotBookingDataManagerImpl getInstance() {
         if (calendarDataManager == null) {
             synchronized (CalendarSlotBookingDataManagerImpl.class) {

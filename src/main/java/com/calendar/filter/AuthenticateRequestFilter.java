@@ -7,18 +7,18 @@ import org.apache.commons.lang3.StringUtils;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.Provider;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static com.calendar.constants.CalendarServiceConstants.AUTH;
 import static com.calendar.constants.CalendarServiceConstants.PARAM_AUTHORIZATION;
 
+/**
+ * The type Authenticate request filter.
+ */
 @Provider
 public class AuthenticateRequestFilter implements ContainerRequestFilter {
-    private static final String PARAM_TOKEN = "token";
     private AuthDataManager authDataManager = AuthDataManager.getInstance();
 
     @Override

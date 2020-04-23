@@ -2,27 +2,20 @@ package com.calendar.manager;
 
 import com.calendar.customexception.CalendarSlotBookingException;
 import com.calendar.models.AuthToken;
-import com.calendar.models.AvailableSlotsRequest;
 import com.calendar.models.ImmutableAuthToken;
-import com.calendar.models.SlotBookingRequest;
-import com.calendar.models.User;
-import com.calendar.models.UserInfo;
-import com.calendar.models.UserSlotsMapping;
-import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jetty.server.Response;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 import static com.calendar.constants.CalendarServiceConstants.AUTH_TOKEN_EXPIRATION_TIME_MINUTES;
 
+/**
+ * The type Auth data manager.
+ * Manages data for auth
+ */
 public class AuthDataManager {
     private static AuthDataManager authDataManager;
     private Map<UUID, AuthToken> usersAuthToken;
@@ -31,6 +24,11 @@ public class AuthDataManager {
         this.usersAuthToken = new HashMap<>();
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static AuthDataManager getInstance() {
         if (authDataManager == null) {
             synchronized (AuthDataManager.class) {
@@ -44,6 +42,13 @@ public class AuthDataManager {
     }
 
 
+    /**
+     * Generate token for existing user auth token.
+     *
+     * @param userId the user id
+     * @return the auth token
+     * @throws CalendarSlotBookingException the calendar slot booking exception
+     */
     public AuthToken generateTokenForExistingUser(UUID userId) throws CalendarSlotBookingException {
         if (!isUserIdExists(userId)) {
             throw new CalendarSlotBookingException(Response.SC_NOT_FOUND,
@@ -52,6 +57,12 @@ public class AuthDataManager {
        return generateToken(userId);
     }
 
+    /**
+     * Generate token auth token.
+     *
+     * @param userId the user id
+     * @return the auth token
+     */
     public AuthToken generateToken(UUID userId) {
         ImmutableAuthToken authToken = ImmutableAuthToken.builder().userId(userId).tokenValidity(
                 LocalDateTime.now().plusMinutes(AUTH_TOKEN_EXPIRATION_TIME_MINUTES))
@@ -62,16 +73,23 @@ public class AuthDataManager {
     }
 
 
+    /**
+     * Is user id exists boolean.
+     *
+     * @param userid the userid
+     * @return the boolean
+     */
     public boolean isUserIdExists(UUID userid) {
         return usersAuthToken.containsKey(userid);
     }
 
-//    public String createToken(UUID userId) {
-//        StringUtils.toEncodedString()
-//
-//        return generateToken(userId);
-//    }
 
+    /**
+     * Gets token.
+     *
+     * @param userId the user id
+     * @return the token
+     */
     public AuthToken getToken(UUID userId) {
        return usersAuthToken.get(userId);
     }
